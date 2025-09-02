@@ -1,10 +1,9 @@
 
-import React from 'react';
 import {
   LineChart, BarChart, AreaChart, PieChart, ScatterChart, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer, Line, Bar, Area, Pie, Cell, Scatter
 } from 'recharts';
-import { CHART_COLORS } from '../constants/colors';
+import { CHART_COLORS } from '../constants/global';
 
 const ChartItem = ({ chart }) => {
   const { type, title, config, data } = chart;
@@ -90,15 +89,12 @@ const ChartItem = ({ chart }) => {
           </ScatterChart>
         );
       default:
-        return <div className="p-4 text-gray-500">Unsupported chart type: {type}</div>;
+        return <div className="unsupported-chart">Unsupported chart type: {type}</div>;
     }
   };
   return (
-    <div
-      className="chart-container"
-      style={{ width: config.width, minHeight: config.height + 50 }}
-    >
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">{title}</h3>
+    <div className="chart-container">
+      <h3 className="chart-title">{title}</h3>
       <ResponsiveContainer width="100%" height={config.height}>
         {renderChart()}
       </ResponsiveContainer>

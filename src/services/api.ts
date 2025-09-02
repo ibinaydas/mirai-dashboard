@@ -11,14 +11,39 @@ export const fetchData = async () => {
             dashboardConfig: {
                 title: "Sales Analytics Dashboard"
             },
+            insights: {
+                summary: "Sales performance shows strong growth in Q2 with Electronics leading category performance.",
+                keyMetrics: [
+                    { label: "Total Revenue", value: "$278,000", change: "+12.5%" },
+                    { label: "Active Customers", value: "1,247", change: "+8.2%" },
+                    { label: "Avg Order Value", value: "$223", change: "+5.1%" },
+                    { label: "Conversion Rate", value: "3.4%", change: "+0.8%" }
+                ],
+                recommendations: [
+                    "Focus marketing efforts on Electronics category",
+                    "Investigate Q1 performance dip for improvement opportunities",
+                    "Consider expanding Product A market share",
+                    "Monitor customer satisfaction correlation with sales"
+                ]
+            },
+            tableData: {
+                title: "Top Products Performance",
+                headers: ["Product", "Sales", "Units", "Revenue", "Growth"],
+                rows: [
+                    ["iPhone 15", "$45,000", "200", "$45,000", "+15%"],
+                    ["MacBook Pro", "$38,000", "95", "$38,000", "+8%"],
+                    ["iPad Air", "$22,000", "150", "$22,000", "+12%"],
+                    ["AirPods Pro", "$18,000", "360", "$18,000", "+25%"],
+                    ["Apple Watch", "$15,000", "125", "$15,000", "+6%"]
+                ]
+            },
             charts: [
                 {
                     id: "sales-trend",
                     type: "line",
                     title: "Sales Trend",
                     config: {
-                        width: "50%",
-                        height: 300,
+                        height: 280,
                         dataKey: "value",
                         xAxisKey: "month",
                         color: "#8884d8"
@@ -37,8 +62,7 @@ export const fetchData = async () => {
                     type: "bar",
                     title: "Category Performance",
                     config: {
-                        width: "50%",
-                        height: 300,
+                        height: 280,
                         dataKey: "sales",
                         xAxisKey: "category",
                         color: "#82ca9d"
@@ -51,30 +75,11 @@ export const fetchData = async () => {
                     ]
                 },
                 {
-                    id: "revenue-area",
-                    type: "area",
-                    title: "Revenue Growth",
-                    config: {
-                        width: "100%",
-                        height: 300,
-                        dataKey: "revenue",
-                        xAxisKey: "quarter",
-                        color: "#ffc658"
-                    },
-                    data: [
-                        { quarter: 'Q1', revenue: 50000 },
-                        { quarter: 'Q2', revenue: 65000 },
-                        { quarter: 'Q3', revenue: 78000 },
-                        { quarter: 'Q4', revenue: 85000 }
-                    ]
-                },
-                {
                     id: "market-share",
                     type: "pie",
                     title: "Market Share",
                     config: {
-                        width: "50%",
-                        height: 300,
+                        height: 280,
                         dataKey: "value",
                         nameKey: "name"
                     },
@@ -90,8 +95,7 @@ export const fetchData = async () => {
                     type: "scatter",
                     title: "Customer Satisfaction vs Sales",
                     config: {
-                        width: "50%",
-                        height: 300,
+                        height: 280,
                         xAxisKey: "satisfaction",
                         yAxisKey: "sales",
                         color: "#ff7300"

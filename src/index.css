@@ -2,29 +2,246 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: Custom styles for better chart appearance */
 @layer components {
-  .chart-container {
-    @apply bg-white rounded-lg shadow-md p-6 mb-6;
+
+  /* Layout Components */
+  .dashboard-container {
+    @apply h-screen flex flex-col bg-gray-50;
   }
-  
+
   .dashboard-header {
-    @apply bg-white shadow-sm border-b;
+    @apply bg-white shadow-sm border-b flex-shrink-0;
   }
-  
+
+  .dashboard-header-content {
+    @apply px-6 py-4;
+  }
+
+  .dashboard-header-inner {
+    @apply flex justify-between items-center;
+  }
+
   .dashboard-title {
     @apply text-2xl font-bold text-gray-900;
   }
-  
+
+  .dashboard-controls {
+    @apply flex items-center space-x-4;
+  }
+
+  .dashboard-timestamp {
+    @apply text-sm text-gray-500;
+  }
+
+  /* Split Panel Layout */
+  .split-container {
+    @apply flex flex-1 overflow-hidden;
+  }
+
+  .left-panel {
+    @apply bg-white border-r border-gray-200 flex-shrink-0 overflow-hidden;
+  }
+
+  .right-panel {
+    @apply bg-gray-50 flex-1 overflow-hidden;
+  }
+
+  .resize-handle {
+    @apply w-1 bg-gray-300 hover:bg-blue-500 cursor-col-resize transition-colors duration-200 flex-shrink-0;
+  }
+
+  /* Insights Panel */
+  .insights-panel {
+    @apply h-full overflow-y-auto p-6;
+  }
+
+  .insights-title {
+    @apply text-xl font-bold text-gray-900 mb-6;
+  }
+
+  .insights-section {
+    @apply mb-8;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold text-gray-800 mb-4;
+  }
+
+  /* Key Metrics */
+  .metrics-grid {
+    @apply grid grid-cols-2 gap-4 mb-6;
+  }
+
+  .metric-card {
+    @apply bg-gray-50 rounded-lg p-4;
+  }
+
+  .metric-label {
+    @apply text-sm text-gray-600;
+  }
+
+  .metric-value {
+    @apply text-xl font-bold text-gray-900;
+  }
+
+  .metric-change-positive {
+    @apply text-sm text-green-600;
+  }
+
+  .metric-change-negative {
+    @apply text-sm text-red-600;
+  }
+
+  /* Summary Section */
+  .summary-box {
+    @apply bg-blue-50 border-l-4 border-blue-500 p-4 rounded;
+  }
+
+  .summary-text {
+    @apply text-gray-700;
+  }
+
+  /* Data Table */
+  .table-container {
+    @apply overflow-x-auto;
+  }
+
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .table-header {
+    @apply bg-gray-50;
+  }
+
+  .table-header-cell {
+    @apply text-left p-3 text-sm font-medium text-gray-700 border-b;
+  }
+
+  .table-row {
+    @apply hover:bg-gray-50;
+  }
+
+  .table-cell {
+    @apply p-3 text-sm text-gray-900 border-b;
+  }
+
+  .table-cell-positive {
+    @apply text-green-600 font-medium;
+  }
+
+  .table-cell-negative {
+    @apply text-red-600 font-medium;
+  }
+
+  /* Recommendations */
+  .recommendations-list {
+    @apply space-y-3;
+  }
+
+  .recommendation-item {
+    @apply flex items-start space-x-3;
+  }
+
+  .recommendation-number {
+    @apply flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center;
+  }
+
+  .recommendation-number-text {
+    @apply text-green-600 text-sm font-bold;
+  }
+
+  .recommendation-text {
+    @apply text-gray-700 text-sm;
+  }
+
+  /* Charts Panel */
+  .charts-panel {
+    @apply h-full overflow-y-auto p-6;
+  }
+
+  .charts-title {
+    @apply text-xl font-bold text-gray-900 mb-6;
+  }
+
+  .charts-container {
+    @apply space-y-6;
+  }
+
+  /* Chart Components */
+  .chart-container {
+    @apply bg-white rounded-lg shadow-md p-6 mb-6;
+  }
+
+  .chart-title {
+    @apply text-lg font-semibold text-gray-800 mb-4;
+  }
+
+  /* Buttons */
   .refresh-button {
     @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
   }
-  
+
+  .retry-button {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  }
+
+  /* Loading States */
+  .loading-container {
+    @apply min-h-screen bg-gray-50 flex items-center justify-center;
+  }
+
+  .loading-content {
+    @apply text-center;
+  }
+
   .loading-spinner {
     @apply animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4;
   }
-  
+
+  .loading-text {
+    @apply text-gray-600;
+  }
+
+  /* Error States */
+  .error-container {
+    @apply min-h-screen bg-gray-50 flex items-center justify-center;
+  }
+
+  .error-content {
+    @apply text-center;
+  }
+
   .error-message {
     @apply bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4;
+  }
+
+  /* Status Bar */
+  .status-bar {
+    @apply bg-white border-t px-6 py-2 flex-shrink-0;
+  }
+
+  .status-bar-content {
+    @apply flex justify-between items-center text-xs text-gray-500;
+  }
+
+  /* Utility Classes */
+  .unsupported-chart {
+    @apply p-4 text-gray-500;
+  }
+
+  /* Responsive Utilities */
+  @media (max-width: 768px) {
+    .metrics-grid {
+      @apply grid-cols-1;
+    }
+
+    .dashboard-controls {
+      @apply flex-col space-x-0 space-y-2;
+    }
+
+    .dashboard-header-inner {
+      @apply flex-col items-start space-y-4;
+    }
   }
 }
