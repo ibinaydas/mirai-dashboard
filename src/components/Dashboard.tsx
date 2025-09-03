@@ -155,7 +155,7 @@ const Dashboard = () => {
       <div className="status-bar">
         <div className="status-bar-content">
           <span>
-            {dashboardData.charts.length} charts loaded
+            {dashboardData.charts?.length || 0} charts loaded
           </span>
           <span>
             Split: {Math.round(leftPanelWidth)}% / {Math.round(100 - leftPanelWidth)}%
